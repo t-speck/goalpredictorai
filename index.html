@@ -204,38 +204,38 @@ window.onerror = function(msg, src, line, col){
 };
 
 /* ============ DATI SETTIMANALI - INIZIO ============ */
-const FORM = ["w","l","w","w","l","w","w","w","l","w"];
+const FORM = ["w","w","w","w","l","w","w","l","w","l"];
 const MATCHES = [
-  { when:"Sabato 29", home:"Juventus", away:"Parma",
-    pick:"1 - Juventus", win:74, es:"2-0",
-    tiri:27, corner:10, cart:3, falli:21, tiriPick:"Juventus" },
-  { when:"Sabato 29", home:"Celtic", away:"Falkirk",
-    pick:"1 - Celtic", win:75, es:"3-1",
-    tiri:26, corner:11, cart:5, falli:22, tiriPick:"Celtic" },
-  { when:"Sabato 29", home:"Tottenham", away:"Newcastle",
-    pick:"2 - Newcastle", win:38, es:"1-1",
-    tiri:24, corner:10, cart:5, falli:24, tiriPick:"Newcastle" },
-  { when:"Sabato 29", home:"Sociedad", away:"Espanol",
-    pick:"1 - Sociedad", win:47, es:"1-1",
-    tiri:25, corner:10, cart:5, falli:26, tiriPick:"Sociedad" },
-  { when:"Sabato 29", home:"Galatasaray", away:"Goztep",
-    pick:"1 - Galatasaray", win:72, es:"1-1",
-    tiri:26, corner:10, cart:5, falli:28, tiriPick:"Galatasaray" },
-  { when:"Sabato 29", home:"Guingamp", away:"Nantes",
-    pick:"1 - Guingamp", win:50, es:"1-1",
-    tiri:24, corner:9, cart:4, falli:23, tiriPick:"Guingamp" },
-  { when:"Sabato 29", home:"Zwolle", away:"Nijmegen",
-    pick:"2 - Nijmegen", win:54, es:"1-1",
-    tiri:27, corner:10, cart:4, falli:25, tiriPick:"Nijmegen" },
-  { when:"Sabato 29", home:"Padova", away:"Verona",
-    pick:"1 - Padova", win:43, es:"1-1",
-    tiri:25, corner:9, cart:5, falli:29, tiriPick:"Padova" },
-  { when:"Sabato 29", home:"Kifisia", away:"Aek",
-    pick:"X - Pareggio", win:36, es:"1-1",
-    tiri:23, corner:9, cart:5, falli:29, tiriPick:"Pareggio" },
-  { when:"Sabato 29", home:"Brest", away:"Toulouse",
-    pick:"1 - Brest", win:37, es:"1-1",
-    tiri:25, corner:9, cart:5, falli:24, tiriPick:"Brest" }
+  { when:"4-6 settembre", home:"Lens", away:"Lorient",
+    pick:"1 - Lens", win:81, es:"1-0",
+    tiri:28, corner:10, cart:3, falli:21, tiriPick:"Segno 1", conc:"si"},
+  { when:"4-6 settembre", home:"Paris Sg", away:"Monaco",
+    pick:"1 - Paris Sg", win:66, es:"1-1",
+    tiri:27, corner:11, cart:3, falli:20, tiriPick:"Segno 1", conc:"si"},
+  { when:"4-6 settembre", home:"Roma", away:"Atalanta",
+    pick:"1 - Roma", win:56, es:"1-0",
+    tiri:25, corner:9, cart:4, falli:25, tiriPick:"Segno 1", conc:"si"},
+  { when:"4-6 settembre", home:"Cercle Brugge", away:"Gent",
+    pick:"1 - Cercle Brugge", win:52, es:"1-1",
+    tiri:28, corner:10, cart:3, falli:21, tiriPick:"Segno 1", conc:"si"},
+  { when:"4-6 settembre", home:"Genoa", away:"Como",
+    pick:"2 - Como", win:51, es:"1-1",
+    tiri:23, corner:8, cart:5, falli:26, tiriPick:"Segno 2", conc:"si"},
+  { when:"4-6 settembre", home:"Dresden", away:"Bochum",
+    pick:"1 - Dresden", win:50, es:"1-1",
+    tiri:25, corner:10, cart:4, falli:24, tiriPick:"Segno 1", conc:"si"},
+  { when:"4-6 settembre", home:"Vallecano", away:"Santander",
+    pick:"1 - Vallecano", win:49, es:"1-1",
+    tiri:29, corner:10, cart:5, falli:25, tiriPick:"Segno 1", conc:"si"},
+  { when:"4-6 settembre", home:"Burnley", away:"Bristol City",
+    pick:"2 - Bristol City", win:49, es:"1-1",
+    tiri:27, corner:10, cart:4, falli:22, tiriPick:"Segno 2", conc:"si"},
+  { when:"4-6 settembre", home:"Swansea", away:"Wrexham",
+    pick:"1 - Swansea", win:42, es:"1-1",
+    tiri:26, corner:10, cart:4, falli:21, tiriPick:"Segno 1", conc:"si"},
+  { when:"4-6 settembre", home:"Heerenveen", away:"Az Alkmaar",
+    pick:"1 - Heerenveen", win:37, es:"1-1",
+    tiri:28, corner:10, cart:3, falli:21, tiriPick:"Segno 1", conc:"si" }
 ];
 /* ============ DATI SETTIMANALI - FINE ============ */
 
@@ -291,8 +291,8 @@ function esc(s){
         '</div>' +
         (m.tiriPick ?
           '<div class="confirm"><span class="ck">Modello tiri</span><span class="cv" style="color:' +
-          (m.pick.indexOf(m.tiriPick) !== -1 ? 'var(--green)' : 'var(--orange)') + '">' + esc(m.tiriPick) +
-          '<em>' + (m.pick.indexOf(m.tiriPick) !== -1 ? 'concorde' : 'discorde') + '</em></span></div>' : '') +
+          (m.conc === 'si' ? 'var(--green)' : 'var(--orange)') + '">' + esc(m.tiriPick) +
+          '<em>' + (m.conc === 'si' ? 'concorde' : 'discorde') + '</em></span></div>' : '') +
       '</div></div></div>';
     el.querySelector('.head').addEventListener('click', (function(node){
       return function(){
